@@ -17,6 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'devise'
 
 group :development do
   gem "nifty-generators"
