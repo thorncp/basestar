@@ -5,4 +5,5 @@ class Ai < ActiveRecord::Base
 
   validates_presence_of :name, :source, :user
   validates_uniqueness_of :name
+  validates_format_of :file_name, :with => /\.rb$/, :on => :create, :message => "must be a ruby file"
 end
