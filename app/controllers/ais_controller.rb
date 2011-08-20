@@ -1,5 +1,5 @@
 class AisController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index, :show, :public]
   before_filter :get_ai, :only => [:edit, :update, :destroy]
 
   def index

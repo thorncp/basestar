@@ -18,6 +18,13 @@
           <%= link_to "Sign in", new_user_session_path %>
         <% end %>    
       </div>
+      <br />
+      <div id="site_nav">
+        <% if user_signed_in? %>
+          <%= link_to "My AIs", ais_path %> |
+        <% end %>
+        <%= link_to "Public AIs", public_ais_path %>
+      </div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>

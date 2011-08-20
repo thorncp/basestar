@@ -1,5 +1,5 @@
 Basestar::Application.routes.draw do
-  get "ais/public" => "ais#public"
+  get "ais/public" => "ais#public", :as => "public_ais"
   resources :ais
 
   devise_for :users
