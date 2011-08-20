@@ -16,7 +16,7 @@ class AisController < ApplicationController
   def create
     @ai = current_user.ais.build(params[:ai])
 
-    @ai.source = File.read(params[:ai][:source].tempfile)
+    @ai.source = File.read(params[:ai][:source].tempfile) if params[:ai][:source]
 
     if @ai.save
       redirect_to @ai, :notice => "Successfully created ai."
@@ -29,7 +29,11 @@ class AisController < ApplicationController
   end
 
   def update
-    if @ai.update_attributes(params[:ai])
+    @ai.attributes = params[:ai]
+
+    @ai.source = File.read(params[:ai][:source].tempfile) if params[:ai][:source]
+
+    if @ai.save
       redirect_to @ai, :notice  => "Successfully updated ai."
     else
       render :action => 'edit'

@@ -4,14 +4,7 @@
   <strong>Name:</strong>
   <%= @ai.name %>
 </p>
-<p>
-  <strong>Source:</strong>
-  <%= @ai.source %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= @ai.user_id %>
-</p>
+<pre class="prettyprint"><%= @ai.source %></pre>
 
 <p>
   <%= link_to "Edit", edit_ai_path(@ai) %> |
