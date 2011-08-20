@@ -5,8 +5,10 @@
     <tr>
       <td><%= ai.name %></td>
       <td><%= link_to "Show", ai %></td>
-      <td><%= link_to "Edit", edit_ai_path(ai) %></td>
-      <td><%= link_to "Destroy", ai, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if ai.user == current_user %>
+        <td><%= link_to "Edit", edit_ai_path(ai) %></td>
+        <td><%= link_to "Destroy", ai, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

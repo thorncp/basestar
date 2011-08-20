@@ -1,12 +1,18 @@
 class AisController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_ai, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_ai, :only => [:edit, :update, :destroy]
 
   def index
     @ais = current_user.ais
   end
 
+  def public
+    @ais = Ai.where(:public => true)
+    render "index"
+  end
+
   def show
+    get_ai(true)
   end
 
   def new
@@ -15,6 +21,8 @@ class AisController < ApplicationController
 
   def create
     @ai = current_user.ais.build(params[:ai])
+
+    @ai.public = params[:ai][:public] == "1"
 
     if params[:ai][:source]
       @ai.source = File.read(params[:ai][:source].tempfile) 
@@ -33,6 +41,8 @@ class AisController < ApplicationController
 
   def update
     @ai.attributes = params[:ai]
+
+    @ai.public = params[:ai][:public] == "1"
 
     if params[:ai][:source]
       @ai.source = File.read(params[:ai][:source].tempfile) 
@@ -53,10 +63,10 @@ class AisController < ApplicationController
 
   private
 
-  def get_ai
+  def get_ai(pub = false)
     @ai = Ai.find(params[:id])
 
-    if @ai.user != current_user
+    unless @ai.user == current_user || pub
       redirect_to ais_path, :alert => "You did it wrong"
     end
   end

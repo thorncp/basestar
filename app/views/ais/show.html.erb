@@ -8,10 +8,16 @@
   <strong>File Name:</strong>
   <%= @ai.file_name %>
 </p>
+<p>
+  <%= @ai.public? ? "Public" : "Private" %>
+</p>
+
 <pre class="prettyprint lang-rb"><%= @ai.source %></pre>
 
 <p>
-  <%= link_to "Edit", edit_ai_path(@ai) %> |
-  <%= link_to "Destroy", @ai, :confirm => 'Are you sure?', :method => :delete %> |
+  <% if @ai.user == current_user %>
+    <%= link_to "Edit", edit_ai_path(@ai) %> |
+    <%= link_to "Destroy", @ai, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
   <%= link_to "View All", ais_path %>
 </p>
