@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  source: MyText
+  user_id: 1
+
+two:
+  name: MyString
+  source: MyText
+  user_id: 1

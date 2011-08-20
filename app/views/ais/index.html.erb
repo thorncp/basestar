@@ -1,0 +1,21 @@
+<% title "Ais" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Source</th>
+    <th>User</th>
+  </tr>
+  <% for ai in @ais %>
+    <tr>
+      <td><%= ai.name %></td>
+      <td><%= ai.source %></td>
+      <td><%= ai.user_id %></td>
+      <td><%= link_to "Show", ai %></td>
+      <td><%= link_to "Edit", edit_ai_path(ai) %></td>
+      <td><%= link_to "Destroy", ai, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Ai", new_ai_path %></p>

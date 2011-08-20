@@ -1,4 +1,6 @@
 Basestar::Application.routes.draw do
+  resources :ais
+
   devise_for :users
 
   get "hi" => "hi#index"

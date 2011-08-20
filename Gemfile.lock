@@ -58,6 +58,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.12)
     multi_json (1.0.3)
     nifty-generators (0.4.6)
     orm_adapter (0.0.5)
@@ -119,6 +120,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   devise
   jquery-rails
+  mocha
   nifty-generators
   rails (= 3.1.0.rc6)
   sass-rails (~> 3.1.0.rc)

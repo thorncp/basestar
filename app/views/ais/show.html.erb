@@ -1,0 +1,20 @@
+<% title "Ai" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ai.name %>
+</p>
+<p>
+  <strong>Source:</strong>
+  <%= @ai.source %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @ai.user_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_ai_path(@ai) %> |
+  <%= link_to "Destroy", @ai, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", ais_path %>
+</p>
