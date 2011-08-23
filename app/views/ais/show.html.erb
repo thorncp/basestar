@@ -9,7 +9,11 @@
   <%= @ai.file_name %>
 </p>
 <p>
-  <%= @ai.public? ? "Public" : "Private" %>
+  <% if @ai.public? %>
+    Public <%= link_to "Download", download_ai_path(@ai) %>
+  <% else %>
+    Private
+  <% end %>
 </p>
 
 <pre class="prettyprint lang-rb"><%= @ai.source %></pre>

@@ -1,5 +1,5 @@
 class AisController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show, :public]
+  before_filter :authenticate_user!, :except => [:index, :show, :public, :download]
   before_filter :get_ai, :only => [:edit, :update, :destroy]
 
   def index
@@ -13,6 +13,11 @@ class AisController < ApplicationController
 
   def show
     get_ai(true)
+  end
+
+  def download
+    get_ai(true)
+    send_data @ai.source, :filename => @ai.file_name
   end
 
   def new
