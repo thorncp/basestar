@@ -3,7 +3,11 @@ class AisController < ApplicationController
   before_filter :get_ai, :only => [:edit, :update, :destroy]
 
   def index
-    @ais = current_user.ais
+    if user_signed_in?
+      @ais = current_user.ais
+    else
+      redirect_to :action => "public"
+    end
   end
 
   def public
