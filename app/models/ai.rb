@@ -9,6 +9,8 @@ class Ai < ActiveRecord::Base
 
   before_validation :set_name_from_file_name
 
+  scope :public, where(:public => true)
+
   def set_name_from_file_name
     self.name = File.basename(self.file_name, ".*").camelize
   end

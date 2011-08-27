@@ -11,7 +11,7 @@ class AisController < ApplicationController
   end
 
   def public
-    @ais = Ai.where(:public => true)
+    @ais = Ai.public
     render "index"
   end
 
