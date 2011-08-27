@@ -1,10 +1,6 @@
 <%= form_for @ai, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
     <%= f.label :source %><br />
     <%= f.file_field :source %>
   </p>
