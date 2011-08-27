@@ -1,5 +1,5 @@
 class Ai < ActiveRecord::Base
-  attr_accessible :name, :source, :user_id
+  attr_accessible :name, :source, :user_id, :public
 
   belongs_to :user
 

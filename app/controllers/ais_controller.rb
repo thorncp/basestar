@@ -31,8 +31,6 @@ class AisController < ApplicationController
   def create
     @ai = current_user.ais.build(params[:ai])
 
-    @ai.public = params[:ai][:public] == "1"
-
     if params[:ai][:source]
       @ai.source = File.read(params[:ai][:source].tempfile) 
       @ai.file_name = params[:ai][:source].original_filename
@@ -50,8 +48,6 @@ class AisController < ApplicationController
 
   def update
     @ai.attributes = params[:ai]
-
-    @ai.public = params[:ai][:public] == "1"
 
     if params[:ai][:source]
       @ai.source = File.read(params[:ai][:source].tempfile) 
