@@ -1,6 +1,7 @@
 class AisController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :public, :download]
   before_filter :get_ai, :only => [:edit, :update, :destroy]
+  before_filter :get_public_ai, :only => [:show, :download]
 
   def index
     if user_signed_in?
@@ -16,11 +17,9 @@ class AisController < ApplicationController
   end
 
   def show
-    get_ai(true)
   end
 
   def download
-    get_ai(true)
     send_data @ai.source, :filename => @ai.file_name
   end
 
@@ -68,11 +67,21 @@ class AisController < ApplicationController
 
   private
 
-  def get_ai(pub = false)
-    @ai = Ai.find(params[:id])
+  # If the user is signed in, redirects to ais_path. Else, redirects
+  # to public_ais_path.
+  def redirect_to_base(options = {})
+    path = user_signed_in? ? ais_path : public_ais_path
+    redirect_to path, options
+  end
 
-    unless @ai.user == current_user || pub
-      redirect_to ais_path, :alert => "You did it wrong"
+  def get_ai(options = {})
+    @ai = Ai.find(params[:id])
+    unless @ai.user == current_user || (options[:public] && @ai.public?)
+      redirect_to_base :alert => "You did it wrong"
     end
+  end
+
+  def get_public_ai
+    get_ai :public => true
   end
 end
