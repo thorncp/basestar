@@ -1,9 +1,11 @@
-one:
-  name: MyString
-  source: MyText
-  user_id: 1
+tigh:
+  name: Colonel Tigh
+  source: puts 'booze!'
+  user: bob
+  public: false
 
-two:
-  name: MyString
-  source: MyText
-  user_id: 1
+chief:
+  name: Galen Tyrol
+  source: puts 'grease!'
+  user: rex
+  public: true
