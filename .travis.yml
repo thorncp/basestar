@@ -1,0 +1,6 @@
+rvm: 1.9.2
+notifications:
+  email: false
+  irc:
+    - "irc.freenode.org#resdat"
+script: "bundle exec rake db:migrate db:test:prepare test"
